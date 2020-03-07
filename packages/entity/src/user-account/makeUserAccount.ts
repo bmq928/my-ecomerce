@@ -1,8 +1,9 @@
 import { UserAccount } from './UserAccount'
+import { RawEntity, makeEntity } from '../entity'
 import { makeUserRole, RawUserRole } from '../user-role'
 import EntityError from '../EntityError'
 
-export type RawUserAccount = {
+export type RawUserAccount = RawEntity & {
   username: unknown
   password: unknown
   roles: unknown
@@ -37,7 +38,10 @@ export function makeUserAccount(o: RawUserAccount): UserAccount {
   if (!(o.roles as object).hasOwnProperty('length'))
     throw new EntityError('roles must be an array of roles in UserAccount')
 
+  const entity = makeEntity(o as RawEntity)
+
   return {
+    ...entity,
     username: removeEscapeHtml(o.username),
     password: o.password,
     roles: (o.roles as Array<RawUserRole>).map(role => makeUserRole(role)),
