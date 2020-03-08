@@ -1,6 +1,6 @@
 import { UserAccount } from './UserAccount'
 import { RawEntity, makeEntity } from '../entity'
-import { makeUserRole, RawUserRole } from '../user-role'
+import { makeUserRole, RawUserRole, UserRole } from '../user-role'
 import EntityError from '../EntityError'
 
 export type RawUserAccount = RawEntity & {
@@ -39,16 +39,23 @@ function makeUserAccountPassword(
   return null
 }
 
+function makeUserAccountRole(o: RawUserAccount): Array<UserRole> {
+  if (o.roles === null || o.roles === undefined) return []
+  
+  if (typeof o.roles !== 'object')
+    throw new EntityError('roles must be an array of roles in UserAccount')
+  if (!(o.roles as object).hasOwnProperty('length'))
+    throw new EntityError('roles must be an array of roles in UserAccount')
+
+  return (o.roles as Array<RawUserRole>).map(role => makeUserRole(role))
+}
+
 export function makeUserAccount(
   o: RawUserAccount,
   type: string | null
 ): UserAccount {
   if (typeof o.username !== 'string')
     throw new EntityError('username must be a string in UserAccount')
-  if (typeof o.roles !== 'object')
-    throw new EntityError('roles must be an array of roles in UserAccount')
-  if (!(o.roles as object).hasOwnProperty('length'))
-    throw new EntityError('roles must be an array of roles in UserAccount')
 
   const entity = makeEntity(o as RawEntity)
 
@@ -56,6 +63,6 @@ export function makeUserAccount(
     ...entity,
     username: removeEscapeHtml(o.username),
     password: makeUserAccountPassword(o, type),
-    roles: (o.roles as Array<RawUserRole>).map(role => makeUserRole(role)),
+    roles: makeUserAccountRole(o),
   }
 }
