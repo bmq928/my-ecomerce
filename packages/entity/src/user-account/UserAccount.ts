@@ -3,6 +3,6 @@ import { Entity } from '../entity'
 
 export type UserAccount = Entity & {
   username: string
-  password: string | null
+  password: string | undefined
   roles: Array<UserRole>
 }
