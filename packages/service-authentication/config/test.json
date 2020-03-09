@@ -3,7 +3,7 @@
   "db": {
     "mongo": {
       "url": "mongodb://localhost:27017",
-      "dbName": "authentication",
+      "dbName": "authentication-test",
       "username": "",
       "password": "",
       "collection": {

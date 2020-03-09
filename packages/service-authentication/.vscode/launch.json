@@ -14,8 +14,9 @@
         "--i",
         "--config",
         "jest.config.js",
+        // "--detectOpenHandles",
         "-t",
-        "Missing password should return an error"
+        "Should create an user when infomation is correct"
       ]
     }
   ]

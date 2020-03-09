@@ -1,10 +1,21 @@
-import app from '.'
 import request from 'supertest'
+import config from 'config'
 
-import { accountRepo } from '../repository'
+import app from '.'
+
+import { accountRepo, dbClient } from '../repository'
 
 describe('Router route', () => {
   const baseApiUrl = '/register'
+
+  afterEach(() => {
+    const dbName: string = config.get('db.mongo.dbName')
+    dbClient.db(dbName).dropDatabase()
+  })
+
+  afterAll(() => {
+    dbClient.close()
+  })
 
   it('Missing username should return an error', async () => {
     const bodyReq = {}
@@ -30,7 +41,9 @@ describe('Router route', () => {
 
     expect(resp.status).toBe(400)
     expect(respData).toHaveProperty('message')
-    expect(respData.message).toBe('password is required for creating user account')
+    expect(respData.message).toBe(
+      'password is required for creating user account'
+    )
   })
 
   it('Wrong type username should return an error', async () => {
@@ -73,6 +86,8 @@ describe('Router route', () => {
 
     expect(resp.status).toBe(201)
     expect(respData.username).toBe(username)
-    expect(await accountRepo.findByUsername(username)).not.toBe(null)
+
+    const createdUserInDb = await accountRepo.findByUsername(username)
+    expect(createdUserInDb).not.toBeFalsy()
   })
 })
