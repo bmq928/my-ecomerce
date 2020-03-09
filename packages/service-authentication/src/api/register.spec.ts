@@ -1,15 +1,16 @@
 import request from 'supertest'
 import config from 'config'
+import md5 from 'md5'
 
 import app from '.'
-
-import { accountRepo, dbClient } from '../repository'
+import { dbClient } from '../repository'
 
 describe('Router route', () => {
   const baseApiUrl = '/register'
+  const dbName: string = config.get('db.mongo.dbName')
+  const accCollectionName: string = config.get('db.mongo.collection.account')
 
   afterEach(() => {
-    const dbName: string = config.get('db.mongo.dbName')
     dbClient.db(dbName).dropDatabase()
   })
 
@@ -87,7 +88,28 @@ describe('Router route', () => {
     expect(resp.status).toBe(201)
     expect(respData.username).toBe(username)
 
-    const createdUserInDb = await accountRepo.findByUsername(username)
+    const db = dbClient.db(dbName)
+    const createdUserInDb = db
+      .collection(accCollectionName)
+      .findOne({ username })
     expect(createdUserInDb).not.toBeFalsy()
+  })
+
+  it('Password should be encrypted before saving to db', async () => {
+    const username = 'koka'
+    const password = '12345678'
+    const bodyReq = { username, password }
+
+    await request(app)
+      .post(baseApiUrl)
+      .send(bodyReq)
+
+    const db = dbClient.db(dbName)
+    const createdUserInDb = await db
+      .collection(accCollectionName)
+      .findOne({ username })
+
+    expect(createdUserInDb).toHaveProperty('password')
+    expect(createdUserInDb.password).toBe(md5(password))
   })
 })

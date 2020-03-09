@@ -1,13 +1,20 @@
+import md5 from 'md5'
 import { UserAccount } from '@buy1s/entity/src/user-account'
 
 import { accountRepo } from '../repository'
 
 export async function createAccount(acc: UserAccount): Promise<UserAccount> {
-  await accountRepo.create(acc)
-  const created: UserAccount = {
-    password: null,
+  const hashedPassword = md5(acc.password)
+  const accToCreate: UserAccount = {
     ...acc,
+    password: hashedPassword,
+  }
+  const accResp: UserAccount = {
+    ...acc,
+    password: undefined,
   }
 
-  return created
+  await accountRepo.create(accToCreate)
+
+  return accResp
 }
