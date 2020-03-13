@@ -5,17 +5,20 @@ import md5 from 'md5'
 import app from '../src/api'
 import { dbClient } from '../src/repository'
 
-describe('Router route', () => {
+describe('[POST] /register', () => {
   const baseApiUrl = '/register'
-  const dbName: string = config.get('db.mongo.dbName')
-  const accCollectionName: string = config.get('db.mongo.collection.account')
+  const dbName = config.get('db.mongo.dbName') as string
+  const accCollectionName = config.get('db.mongo.collection.account') as string
 
-  afterEach(() => {
-    dbClient.db(dbName).dropDatabase()
+  afterEach(done => {
+    dbClient
+      .db(dbName)
+      .dropDatabase()
+      .then(done)
   })
 
-  afterAll(() => {
-    dbClient.close()
+  afterAll(done => {
+    dbClient.close().then(done)
   })
 
   it('Missing username should return an error', async () => {

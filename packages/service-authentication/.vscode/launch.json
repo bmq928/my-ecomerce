@@ -16,7 +16,7 @@
         "jest.config.js",
         // "--detectOpenHandles",
         "-t",
-        "Password should be encrypted before saving to db"
+        "Login success should return a jsonwebtoken"
       ]
     }
   ]

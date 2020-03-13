@@ -1,17 +1,18 @@
 module.exports = {
-  moduleFileExtensions: ["ts", "tsx", "js", "json"],  
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
   transform: {
-    "^.+\\.(ts|tsx)$": "ts-jest"
+    '^.+\\.(ts|tsx)$': 'ts-jest',
   },
   globals: {
-    "ts-jest": {
-      tsConfig: "tsconfig.json",
-      diagnostics: true
-    }
+    'ts-jest': {
+      tsConfig: 'tsconfig.json',
+      diagnostics: true,
+    },
   },
   // testMatch: ["**/__tests__/specs/**/*.+(ts|tsx|js)"],
-  testPathIgnorePatterns: ["/node_modules/", "/dist/", "/lib/"],
+  testPathIgnorePatterns: ['/node_modules/', '/dist/', '/lib/'],
   // setupTestFrameworkScriptFile: "./__tests__/setup.ts",
   verbose: true,
+  // setupFilesAfterEnv: ['./jest.setup.js'],
   // testURL: "http://localhost/"
-};
+}
