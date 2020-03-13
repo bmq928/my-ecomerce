@@ -16,7 +16,7 @@
         "jest.config.js",
         // "--detectOpenHandles",
         "-t",
-        "Should create an user when infomation is correct"
+        "Password should be encrypted before saving to db"
       ]
     }
   ]

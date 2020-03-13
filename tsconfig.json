@@ -7,6 +7,7 @@
     "moduleResolution": "node",
     "sourceMap": true,
     "baseUrl": ".",
+    "experimentalDecorators": true,
     "paths": {
       "*": [
         "node_modules/*"

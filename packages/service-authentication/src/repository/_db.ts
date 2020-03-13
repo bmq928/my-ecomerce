@@ -16,7 +16,6 @@ client.connect((err, result) => {
   client.emit(MONGO_EVENT_CONNECTED)
 })
 
-
 export function getDb(): Promise<Db> {
   return new Promise<Db>((resolve, reject) => {
     if (client.isConnected()) return resolve(client.db(dbName))

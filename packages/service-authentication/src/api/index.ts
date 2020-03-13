@@ -10,6 +10,7 @@ import healthcheckRoute from './healthcheck'
 import readyCheckRoute from './readycheck'
 import loginRoute from './login'
 import registerRoute from './register'
+import { BusinessError, handleError } from '../error-handler'
 
 const app = express()
 
@@ -25,9 +26,15 @@ app.use('/', registerRoute)
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  if (err instanceof EntityError) {
+  const isSendErrToClient =
+    err instanceof EntityError || err instanceof BusinessError
+
+  if (isSendErrToClient) {
     res.status(400).json({ message: err.message })
+    return
   }
+
+  handleError(err)
   throw err
 })
 

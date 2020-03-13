@@ -2,8 +2,8 @@ import request from 'supertest'
 import config from 'config'
 import md5 from 'md5'
 
-import app from '.'
-import { dbClient } from '../repository'
+import app from '../src/api'
+import { dbClient } from '../src/repository'
 
 describe('Router route', () => {
   const baseApiUrl = '/register'
@@ -111,5 +111,21 @@ describe('Router route', () => {
 
     expect(createdUserInDb).toHaveProperty('password')
     expect(createdUserInDb.password).toBe(md5(password))
+  })
+
+  it('Should not exist 2 user in db with same username', async () => {
+    const username = 'koka'
+    const password = '12345678'
+    const bodyReq = { username, password }
+
+    const db = dbClient.db(dbName)
+    await db.collection(accCollectionName).insertOne({ username })
+
+    const resp = await request(app)
+      .post(baseApiUrl)
+      .send(bodyReq)
+    const respData = JSON.parse(resp.text)
+
+    expect(respData.message).toBe('account is existed')
   })
 })

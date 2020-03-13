@@ -22,7 +22,8 @@ export async function findByUsername(username: string): Promise<UserAccount> {
 }
 
 async function getAccDTO(): Promise<Collection<UserAccount>> {
+  const name = config.get('db.mongo.collection.account') as string
   const db = await getDb()
-  const accDTO = db.collection(config.get('db.mongo.collection.account'))
+  const accDTO = db.collection(name)
   return accDTO
 }
