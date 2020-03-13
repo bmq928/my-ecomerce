@@ -5,7 +5,9 @@ export type RawUserRole = {
   name: unknown
 }
 
-export function makeUserRole(o: RawUserRole): UserRole {
+export function makeUserRole(o?: RawUserRole): UserRole {
+  if(o === null) return null
+
   if (typeof o.name !== 'string')
     throw new EntityError('name must be a string in UserRole')
 

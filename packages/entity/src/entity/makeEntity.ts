@@ -6,7 +6,9 @@ export type RawEntity = {
   id: unknown
 }
 
-export function makeEntity(o: RawEntity): Entity {
+export function makeEntity(o?: RawEntity): Entity {
+  if(o === null) return null
+
   if (!o.id) return { id: uuid() }
   if (typeof o.id === 'number' || typeof o.id === 'string')
     return {

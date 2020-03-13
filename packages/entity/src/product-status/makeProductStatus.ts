@@ -18,7 +18,9 @@ type RawProductStatus = {
   info: RawProductOnSale | unknown
 }
 
-function makeOnsaleProductStatus(o: RawProductOnSale): ProductOnSale {
+function makeOnsaleProductStatus(o?: RawProductOnSale): ProductOnSale {
+  if(o === null) return null
+
   if (typeof o.discount !== 'number')
     throw new EntityError('discount must be number in ProductOnSale')
   if (typeof o.discountUnit !== 'string')
@@ -37,7 +39,9 @@ function makeOnsaleProductStatus(o: RawProductOnSale): ProductOnSale {
   }
 }
 
-export function makeProductStatus(o: RawProductStatus): ProductStatus {
+export function makeProductStatus(o?: RawProductStatus): ProductStatus {
+  if(o === null) return null
+
   if (typeof o.type !== 'string')
     throw new EntityError('type must be string in productStatus')
 

@@ -1,6 +1,7 @@
 import express, { Request, Response, NextFunction } from 'express'
 import cors from 'cors'
 import bodyParser from 'body-parser'
+import morgan from 'morgan'
 import 'express-async-errors'
 
 import EntityError from '@buy1s/entity/src/EntityError'
@@ -12,6 +13,7 @@ import registerRoute from './register'
 
 const app = express()
 
+app.use(morgan(':method :url :status - :response-time ms'))
 app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))

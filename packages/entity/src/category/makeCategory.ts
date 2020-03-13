@@ -8,7 +8,9 @@ type RawCategory = {
   parentCategory: unknown
 }
 
-export function makeCategory(o: RawCategory): Category {
+export function makeCategory(o?: RawCategory): Category {
+  if(o === null) return null
+
   if (typeof o.id !== 'number')
     throw new EntityError('id must be a number in category')
   if (typeof o.code !== 'string')

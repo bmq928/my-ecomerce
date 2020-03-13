@@ -29,9 +29,12 @@ function removeEscapeHtml(str: string): string {
 }
 
 function makeUserAccountPassword(
-  o: RawUserAccount,
+  o?: RawUserAccount,
   type?: string
 ): string | undefined {
+
+  if(o === null) return null
+
   if (type === 'CREATE' && !o.password)
     throw new EntityError('password is required for creating user account')
 
@@ -41,7 +44,9 @@ function makeUserAccountPassword(
   return o.password
 }
 
-function makeUserAccountRole(o: RawUserAccount): Array<UserRole> {
+function makeUserAccountRole(o?: RawUserAccount): Array<UserRole> {
+  if(o === null) return null
+
   if (o.roles === null || o.roles === undefined) return []
 
   if (typeof o.roles !== 'object')
@@ -52,7 +57,9 @@ function makeUserAccountRole(o: RawUserAccount): Array<UserRole> {
   return (o.roles as Array<RawUserRole>).map(role => makeUserRole(role))
 }
 
-export function makeUserAccount(o: RawUserAccount, type?: string): UserAccount {
+export function makeUserAccount(o?: RawUserAccount, type?: string): UserAccount {
+  if(o === null) return null
+
   if (typeof o.username !== 'string')
     throw new EntityError('username must be a string in UserAccount')
 

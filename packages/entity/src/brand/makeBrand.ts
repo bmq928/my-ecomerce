@@ -6,7 +6,9 @@ type RawBrand = {
   name: unknown
 }
 
-export function makeBrand(o: RawBrand): Brand {
+export function makeBrand(o?: RawBrand): Brand {
+  if(o === null) return null
+
   if (typeof o.code !== 'string')
     throw new EntityError('code must be a string in brand')
 

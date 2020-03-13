@@ -16,6 +16,7 @@
     "@types/jsonwebtoken": "^8.3.8",
     "@types/md5": "^2.1.33",
     "@types/mongodb": "^3.5.2",
+    "@types/morgan": "^1.9.0",
     "@types/redis": "^2.8.16",
     "@types/supertest": "^2.0.8",
     "@types/winston": "^2.4.4",
@@ -37,6 +38,7 @@
     "jsonwebtoken": "^8.5.1",
     "md5": "^2.2.1",
     "mongodb": "^3.5.4",
+    "morgan": "^1.9.1",
     "redis": "^3.0.2",
     "winston": "^3.2.1"
   }

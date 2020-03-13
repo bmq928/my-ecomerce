@@ -7,7 +7,9 @@ export type RawLoginSession = {
   token: unknown
 }
 
-export function makeLoginSession(o: RawLoginSession): LoginSession {
+export function makeLoginSession(o?: RawLoginSession): LoginSession {
+  if(o === null) return null
+
   if (typeof o.userAgent !== 'string')
     throw new EntityError('userAgent must be a string in LoginSession')
   if (typeof o.ip !== 'string')
