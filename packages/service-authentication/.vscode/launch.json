@@ -15,8 +15,8 @@
         "--config",
         "jest.config.js",
         // "--detectOpenHandles",
-        "-t",
-        "Login success should return a jsonwebtoken"
+        // "-t",
+        // "Login success should return a jsonwebtoken"
       ]
     }
   ]

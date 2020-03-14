@@ -13,6 +13,6 @@ module.exports = {
   testPathIgnorePatterns: ['/node_modules/', '/dist/', '/lib/'],
   // setupTestFrameworkScriptFile: "./__tests__/setup.ts",
   verbose: true,
-  // setupFilesAfterEnv: ['./jest.setup.js'],
+  // setupFilesAfterEnv: ['./jest.setup.ts'],
   // testURL: "http://localhost/"
 }

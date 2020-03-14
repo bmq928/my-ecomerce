@@ -3,6 +3,7 @@ import config from 'config'
 import md5 from 'md5'
 
 import app from '../src/api'
+import { disconnectAll, refreshAll } from './_teardown'
 import { dbClient } from '../src/repository'
 
 describe('[POST] /register', () => {
@@ -10,15 +11,14 @@ describe('[POST] /register', () => {
   const dbName = config.get('db.mongo.dbName') as string
   const accCollectionName = config.get('db.mongo.collection.account') as string
 
-  afterEach(done => {
-    dbClient
-      .db(dbName)
-      .dropDatabase()
-      .then(done)
+  afterEach(async done => {
+    await refreshAll()
+    done()
   })
 
-  afterAll(done => {
-    dbClient.close().then(done)
+  afterAll(async done => {
+    await disconnectAll()
+    done()
   })
 
   it('Missing username should return an error', async () => {

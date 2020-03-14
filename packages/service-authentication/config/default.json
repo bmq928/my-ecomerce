@@ -1,5 +1,7 @@
 {
   "port": 3000,
+  "secret": "something",
+  "loginExpiredIn": "2h",
   "db": {
     "mongo": {
       "url": "mongodb://localhost:27017",
@@ -10,8 +12,14 @@
         "account": "accounts"
       },
       "config": {
-        "useUnifiedTopology": true        
+        "useUnifiedTopology": true,
+        "poolSize": 4 // num core
       }
+    },
+    "redis": {
+      "host": "localhost",
+      "port": 6379,
+      "socket_keepalive": true
     }
   }
 }

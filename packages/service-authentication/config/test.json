@@ -1,5 +1,7 @@
 {
   "port": 3000,
+  "secret": "something",
+  "loginExpiredIn": "2h",
   "db": {
     "mongo": {
       "url": "mongodb://localhost:27017",
