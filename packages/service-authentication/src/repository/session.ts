@@ -19,9 +19,21 @@ export function get(ip: string, userAgent: string): Promise<LoginSession> {
     cacheClient.get(key, (err, token) => {
       if (err) return reject(err)
       if (!token) return resolve(null)
-      
+
       const sessionInfo = { ip, userAgent, token }
       resolve(sessionInfo)
+    })
+  })
+}
+
+export function remove(ip: string, userAgent: string): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const key = makeSessionKey(ip, userAgent)
+    
+    cacheClient.del(key, err => {
+      if (err) return reject(err)
+
+      resolve()
     })
   })
 }

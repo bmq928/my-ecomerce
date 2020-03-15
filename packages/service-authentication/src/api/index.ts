@@ -5,12 +5,12 @@ import morgan from 'morgan'
 import 'express-async-errors'
 
 import EntityError from '@buy1s/entity/src/EntityError'
-
+import { BusinessError, handleError } from '../error-handler'
 import healthcheckRoute from './healthcheck'
 import readyCheckRoute from './readycheck'
 import loginRoute from './login'
 import registerRoute from './register'
-import { BusinessError, handleError } from '../error-handler'
+import logoutRoute from './logout'
 
 const app = express()
 
@@ -23,6 +23,7 @@ app.use('/', healthcheckRoute)
 app.use('/', readyCheckRoute)
 app.use('/', loginRoute)
 app.use('/', registerRoute)
+app.use('/', logoutRoute)
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {

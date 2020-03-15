@@ -32,7 +32,7 @@ describe('[GET] /login', () => {
       token: defaultToken,
       userAgent: defaultUserAgent,
     })
-    cacheClient.set(
+    await cacheClient.set(
       loggedInSession.ip + loggedInSession.userAgent,
       loggedInSession.token
     )
