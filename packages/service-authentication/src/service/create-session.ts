@@ -24,7 +24,7 @@ export async function createSession(
   const loginExpiredIn = config.get('loginExpiredIn') as string
   const token = generateToken(payload, loginExpiredIn)
   const sessionInfo = { userAgent, ip, token }
-  sessionRepo.create(sessionInfo)
+  await sessionRepo.create(sessionInfo)
 
   return sessionInfo
 }
