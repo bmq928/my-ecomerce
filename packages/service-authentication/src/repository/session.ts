@@ -18,7 +18,8 @@ export function get(ip: string, userAgent: string): Promise<LoginSession> {
     const key = makeSessionKey(ip, userAgent)
     cacheClient.get(key, (err, token) => {
       if (err) return reject(err)
-
+      if (!token) return resolve(null)
+      
       const sessionInfo = { ip, userAgent, token }
       resolve(sessionInfo)
     })

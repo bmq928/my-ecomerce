@@ -1,4 +1,5 @@
 import md5 from 'md5'
+import config from 'config'
 
 import { UserAccount } from '@buy1s/entity/src/user-account'
 import { LoginSession } from '@buy1s/entity/src/login-session'
@@ -20,7 +21,8 @@ export async function createSession(
     username: existed.username,
     id: existed.id,
   }
-  const token = generateToken(payload)
+  const loginExpiredIn = config.get('loginExpiredIn') as string
+  const token = generateToken(payload, loginExpiredIn)
   const sessionInfo = { userAgent, ip, token }
   sessionRepo.create(sessionInfo)
 
