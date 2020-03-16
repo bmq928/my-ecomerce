@@ -16,7 +16,7 @@
         "jest.config.js",
         // "--detectOpenHandles",
         "-t",
-        "Logout should remove session"
+        "Should create an access-token when refresh-token is valid and existed in db"
       ]
     }
   ]

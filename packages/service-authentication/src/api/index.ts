@@ -11,6 +11,7 @@ import readyCheckRoute from './readycheck'
 import loginRoute from './login'
 import registerRoute from './register'
 import logoutRoute from './logout'
+import refreshToken from './refresh-token'
 
 const app = express()
 
@@ -24,6 +25,7 @@ app.use('/', readyCheckRoute)
 app.use('/', loginRoute)
 app.use('/', registerRoute)
 app.use('/', logoutRoute)
+app.use('/', refreshToken)
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {

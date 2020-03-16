@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node src/app.ts",
-    "test": "jest /test --verbose",
+    "test": "jest /test --verbose -i",
     "build": "tsc"
   },
   "devDependencies": {
