@@ -3,23 +3,12 @@ import jwt from 'jsonwebtoken'
 import config from 'config'
 
 import app from '../src/api'
-import { disconnectAll, refreshAll } from './_teardown'
 import { cacheClient } from '../src/repository'
 
 describe('[POST] /refresh-token', () => {
   const baseUrl = '/refresh-token'
   const defaultIp = '::ffff:127.0.0.1'
   const defaultUserAgent = 'node-superagent/3.8.3'
-
-  afterEach(async done => {
-    await refreshAll()
-    done()
-  })
-
-  afterAll(async done => {
-    await disconnectAll()
-    done()
-  })
 
   it('Should create an access-token when refresh-token is valid and existed in db', async () => {
     const refreshToken = jwt.sign(

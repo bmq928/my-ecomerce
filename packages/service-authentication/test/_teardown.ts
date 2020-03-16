@@ -3,8 +3,6 @@ import config from 'config'
 import { dbClient, cacheClient } from '../src/repository'
 
 export async function disconnectAll(): Promise<void> {
-  // await disconnectCache()
-  // await disconnectDb()
   await Promise.all([disconnectCache(), disconnectDb()])
 }
 
@@ -22,8 +20,6 @@ export function disconnectCache(): Promise<void> {
 }
 
 export async function refreshAll(): Promise<void> {
-  // await refreshCache()
-  // await refreshDb()
   await Promise.all([refreshCache(), refreshDb()])
 }
 

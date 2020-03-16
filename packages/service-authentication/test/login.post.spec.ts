@@ -5,7 +5,6 @@ import faker from 'faker'
 import jwt from 'jsonwebtoken'
 
 import app from '../src/api'
-import { disconnectAll, refreshAll } from './_teardown'
 import { dbClient, cacheClient } from '../src/repository'
 import { makeUserAccount, UserAccount } from '@buy1s/entity/src/user-account'
 import { UserRole } from '@buy1s/entity/src/user-role'
@@ -22,16 +21,6 @@ describe('[POST] /login', () => {
     const docs = await insertAutogenerate(numAutoGenDoc)
     
     generatedFakeAccs = docs
-    done()
-  })
-
-  afterEach(async done => {
-    await refreshAll()
-    done()
-  })
-
-  afterAll(async done => {
-    await disconnectAll()
     done()
   })
 

@@ -3,7 +3,6 @@ import config from 'config'
 
 import app from '../src/api'
 import { makeLoginSession } from '@buy1s/entity/src/login-session'
-import { disconnectAll, refreshAll } from './_teardown'
 import { cacheClient } from '../src/repository'
 import jwt from 'jsonwebtoken'
 
@@ -15,16 +14,6 @@ describe('[GET] /login', () => {
     { username: 'kame', id: 'df' },
     config.get('secret')
   )
-
-  afterEach(async done => {
-    await refreshAll()
-    done()
-  })
-
-  afterAll(async done => {
-    await disconnectAll()
-    done()
-  })
 
   it('Should return a accessToken and refreshToken when user have already logged in', async () => {
     const loggedInSession = makeLoginSession({
