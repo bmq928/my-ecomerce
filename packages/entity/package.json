@@ -1,7 +1,7 @@
 {
   "name": "@buy1s/entity",
   "version": "1.0.0",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
   "license": "MIT",
   "devDependencies": {
     "@types/uuid": "^7.0.0",
