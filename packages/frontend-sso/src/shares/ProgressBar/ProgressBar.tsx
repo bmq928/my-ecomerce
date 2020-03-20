@@ -14,7 +14,6 @@ export default function ProgressBar() {
 
       $this.style.width = `${len}%`
       $this.setAttribute('aria-valuenow', len.toString())
-      // $this.text = `${len}%`
     }
 
     function start() {
@@ -34,6 +33,7 @@ export default function ProgressBar() {
           step = 0.1
         }
       }, 100)
+
       return interval
     }
 

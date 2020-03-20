@@ -4,6 +4,6 @@
     "outDir": "dist",
     "esModuleInterop": true
   },
-  "include": ["src", "typings", "node_modules/@buy1s/entity"],
+  "include": ["src", "typings"],
   "exclude": ["dist"]
 }
