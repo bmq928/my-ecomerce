@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import withLazy from './shares/with-lazy'
+import './App.scss'
 
 const LoginPage = React.lazy(() => import('./pages/LoginPage'))
 
