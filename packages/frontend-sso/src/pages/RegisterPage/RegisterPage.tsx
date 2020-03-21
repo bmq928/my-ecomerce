@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import './LoginPage.scss'
+import './RegisterPage.scss'
 
-export default function LoginPage() {
+export default function RegisterPage() {
   return (
-    <div className="LoginPage box">
+    <div className="RegisterPage box">
       <div className="field is-horizontal title-group">
-        <h4 className="subtitle is-4">Login Page</h4>
+        <h4 className="subtitle is-4">Register Page</h4>
       </div>
       <div className="field is-horizontal">
         <div className="field-label is-normal">
@@ -44,7 +44,7 @@ export default function LoginPage() {
       <div className="field is-horizontal button-group">
         <button className="button is-danger">Cancel</button>
         <button className="button is-primary">Login</button>
-        <Link to="/register">Don't have account?</Link>
+        <Link to="/login">Already have account?</Link>
       </div>
     </div>
   )
