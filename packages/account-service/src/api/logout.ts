@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { removeSession } from '../service'
+import { removeSession } from '../use-cases'
 
 const router = Router()
 

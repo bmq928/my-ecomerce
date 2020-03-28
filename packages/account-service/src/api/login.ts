@@ -1,26 +1,16 @@
 import { Router } from 'express'
-import config from 'config'
 import { makeUserAccount } from '@entity/user-account'
 
-// import { makeUserAccount } from '@entity'
 import {
-  generateTokenWithPayloadFrom,
   getSession,
   createSession,
-} from '../service'
+} from '../use-cases'
 
 const router = Router()
 
 router.get('/login', async (req, res) => {
-  const sess = await getSession(req.ip, req.headers['user-agent'])
-  const refreshToken = sess.token
-  const accessTokenExpiredIn = config.get('accessTokenExpiredIn') as string
-  const accessToken = generateTokenWithPayloadFrom(
-    refreshToken,
-    accessTokenExpiredIn
-  )
-
-  res.status(200).json({ refreshToken, accessToken })
+  await getSession(req.ip, req.headers['user-agent'])
+  res.status(200).send('ok')
 })
 
 router.post('/login', async (req, res) => {

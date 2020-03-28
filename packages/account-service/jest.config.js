@@ -3,8 +3,8 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/test/_setupTests.ts'],
   moduleDirectories: ['node_modules'],
   moduleNameMapper: {
-    "@entity/(.*)": "<rootDir>/node_modules/@buy1s/account-entity/src/$1",
-    "@root/(.*)": "<rootDir>/src/$1"
+    "@entity/(.*)": "<rootDir>/node_modules/@buy1s/account-entity/dist/$1",
+    "@app/(.*)": "<rootDir>/src/$1"
   },
   transform: {
     '^.+\\.(ts|tsx)$': 'ts-jest',

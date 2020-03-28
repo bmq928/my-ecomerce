@@ -1,7 +1,7 @@
 import request from 'supertest'
 
-import app from '../src/api'
-import { cacheClient } from '../src/repository'
+import app from '@app/api'
+import { cacheClient } from '@app/repositories'
 import { makeLoginSession } from '@entity/login-session'
 
 describe('[PUT] /logout', () => {

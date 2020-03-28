@@ -1,4 +1,4 @@
-import { client as cacheClient } from './_cache'
+import { client as cacheClient } from './_redis'
 import { LoginSession } from '@entity/login-session'
 
 export function create(sess: LoginSession): Promise<void> {

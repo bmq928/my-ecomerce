@@ -1,4 +1,4 @@
-import { sessionRepo } from '../repository'
+import { sessionRepo } from '../repositories'
 import { LoginSession } from '@entity/login-session'
 import { BusinessError } from '../error-handler'
 

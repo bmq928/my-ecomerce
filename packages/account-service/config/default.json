@@ -10,7 +10,9 @@
       "username": "",
       "password": "",
       "collection": {
-        "account": "accounts"
+        "account": {
+          "name": "accounts"
+        }
       },
       "config": {
         "useUnifiedTopology": true,

@@ -1,4 +1,4 @@
-import { sessionRepo } from "../repository";
+import { sessionRepo } from "../repositories";
 
 export async function removeSession(
   ip: string,

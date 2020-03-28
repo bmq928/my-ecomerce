@@ -2,13 +2,13 @@ import request from 'supertest'
 import config from 'config'
 import md5 from 'md5'
 
-import app from '../src/api'
-import { dbClient } from '../src/repository'
+import app from '@app/api'
+import { dbClient } from '@app/repositories'
 
 describe('[POST] /register', () => {
   const baseApiUrl = '/register'
   const dbName = config.get('db.mongo.dbName') as string
-  const accCollectionName = config.get('db.mongo.collection.account') as string
+  const accCollectionName = config.get('db.mongo.collection.account.name') as string
 
   it('Missing username should return an error', async () => {
     const bodyReq = {}

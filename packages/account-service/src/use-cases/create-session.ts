@@ -3,7 +3,7 @@ import config from 'config'
 
 import { UserAccount } from '@entity/user-account'
 import { LoginSession } from '@entity/login-session'
-import { accountRepo, sessionRepo } from '../repository'
+import { accountRepo, sessionRepo } from '../repositories'
 import { BusinessError } from '../error-handler'
 import { generateToken } from './generate-jwt'
 

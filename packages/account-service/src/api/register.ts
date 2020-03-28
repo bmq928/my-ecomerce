@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { makeUserAccount } from '@entity/user-account'
 
-import { createAccount } from '../service'
+import { createAccount } from '../use-cases'
 
 const router = Router()
 

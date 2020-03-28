@@ -2,7 +2,7 @@ import md5 from 'md5'
 import { UserAccount } from '@entity/user-account'
 
 import { BusinessError } from '../error-handler'
-import { accountRepo } from '../repository'
+import { accountRepo } from '../repositories'
 
 export async function createAccount(acc: UserAccount): Promise<UserAccount> {
   const existedAcc = await accountRepo.findByUsername(acc.username)

@@ -1,9 +1,9 @@
 import request from 'supertest'
 import config from 'config'
 
-import app from '../src/api'
+import app from '@app/api'
 import { makeLoginSession } from '@entity/login-session'
-import { cacheClient } from '../src/repository'
+import { cacheClient } from '@app/repositories'
 import jwt from 'jsonwebtoken'
 
 describe('[GET] /login', () => {
@@ -15,7 +15,7 @@ describe('[GET] /login', () => {
     config.get('secret')
   )
 
-  it('Should return a accessToken and refreshToken when user have already logged in', async () => {
+  it('Should return ok message when user have already logged in', async () => {
     const loggedInSession = makeLoginSession({
       ip: defaultIp,
       token: defaultToken,
@@ -29,14 +29,8 @@ describe('[GET] /login', () => {
     const resp = await request(app)
       .get(baseUrl)
       .set('User-Agent', defaultUserAgent)
-    const respData = JSON.parse(resp.text)
 
     expect(resp.status).toBe(200)
-    expect(respData).toHaveProperty('refreshToken')
-    expect(respData).toHaveProperty('accessToken')
-    expect(respData.refreshToken).toBe(loggedInSession.token)
-    expect(respData.accessToken).toBeTruthy()
-    expect(respData.refreshToken).not.toEqual(respData.accessToken)
   })
 
   it('Should return an error message when user have not logged in', async () => {

@@ -1,6 +1,6 @@
 import { Router } from 'express'
 
-import { isDbConnected } from '../repository'
+import { isDbConnected } from '../repositories'
 
 const router = Router()
 
