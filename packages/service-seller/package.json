@@ -1,6 +1,0 @@
-{
-  "name": "@buy1s/service-seller",
-  "version": "1.0.0",
-  "main": "dist/index.js",
-  "license": "MIT"
-}

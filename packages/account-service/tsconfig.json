@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {
+      "@entity/*": ["node_modules/@buy1s/account-entity/src/*"],
+      "@root/*": ["src/*"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["dist"]
+}
