@@ -5,7 +5,7 @@
   "accessTokenExpiredIn": "5m",
   "db": {
     "mongo": {
-      "url": "mongodb://localhost:27017",
+      "url": "mongodb://127.0.0.1:27017",
       "dbName": "authentication-test",
       "username": "",
       "password": "",
@@ -18,6 +18,11 @@
         "useUnifiedTopology": true,
         "poolSize": 4 // 4 core
       }
+    },
+    "redis": {
+      "host": "localhost",
+      "port": 6379,
+      "socket_keepalive": true
     }
   }
 }
