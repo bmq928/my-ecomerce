@@ -5,5 +5,7 @@ services:
   - mongodb
   - redis-server
 before_script:
-  - yarn lerna bootstrap && yarn lerna run build
-script: yarn lerna run --scope @buy1s/*-service test:ci
+  - yarn lerna bootstrap 
+  - yarn lerna run build
+script:
+  -  yarn lerna run --scope @buy1s/*-service test:ci
