@@ -2,8 +2,8 @@ import request from 'supertest'
 import config from 'config'
 import md5 from 'md5'
 
-import app from '@app/api'
-import { dbClient } from '@app/repositories'
+import app from '../src/api'
+import { dbClient } from '../src/repositories'
 
 describe('[POST] /register', () => {
   const baseApiUrl = '/register'

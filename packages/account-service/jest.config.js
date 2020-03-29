@@ -1,20 +1,4 @@
-module.exports = {
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
-  setupFilesAfterEnv: ['<rootDir>/test/_setupTests.ts'],
-  moduleDirectories: ['node_modules'],
-  moduleNameMapper: {
-    "@entity/(.*)": "<rootDir>/node_modules/@buy1s/account-entity/dist/$1",
-    "@app/(.*)": "<rootDir>/src/$1"
-  },
-  transform: {
-    '^.+\\.(ts|tsx)$': 'ts-jest',
-  },
-  globals: {
-    'ts-jest': {
-      tsConfig: 'tsconfig.json',
-      diagnostics: true,
-    },
-  },
-  testPathIgnorePatterns: ['/node_modules/', '/dist/', '/lib/'],
-  verbose: true,
-}
+const env = process.env['NODE_ENV']
+
+if (env === 'ci') module.exports = require('./jest.ci.config')
+else module.exports = require('./jest.dev.config')

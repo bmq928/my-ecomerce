@@ -1,8 +1,8 @@
 import request from 'supertest'
 
-import app from '@app/api'
-import { cacheClient } from '@app/repositories'
-import { makeLoginSession } from '@entity/login-session'
+import app from '../src/api'
+import { cacheClient } from '../src/repositories'
+import { makeLoginSession } from '@buy1s/account-entity'
 
 describe('[PUT] /logout', () => {
   const baseUrl = '/logout'
@@ -23,7 +23,7 @@ describe('[PUT] /logout', () => {
     const resp = await request(app)
       .put(baseUrl)
       .set('User-Agent', defaultUserAgent)
-    
+
     expect(resp.status).toBe(204)
 
     const sessionKey = defaultIp + defaultUserAgent

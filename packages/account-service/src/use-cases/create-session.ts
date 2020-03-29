@@ -1,8 +1,8 @@
 import md5 from 'md5'
 import config from 'config'
 
-import { UserAccount } from '@entity/user-account'
-import { LoginSession } from '@entity/login-session'
+import { UserAccount } from '@buy1s/account-entity'
+import { LoginSession } from '@buy1s/account-entity'
 import { accountRepo, sessionRepo } from '../repositories'
 import { BusinessError } from '../error-handler'
 import { generateToken } from './generate-jwt'

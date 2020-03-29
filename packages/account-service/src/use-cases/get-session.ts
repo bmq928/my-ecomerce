@@ -1,5 +1,5 @@
 import { sessionRepo } from '../repositories'
-import { LoginSession } from '@entity/login-session'
+import { LoginSession } from '@buy1s/account-entity'
 import { BusinessError } from '../error-handler'
 
 export async function getSession(

@@ -1,0 +1,23 @@
+{
+  "port": 3000,
+  "secret": "something",
+  "loginExpiredIn": "2h",
+  "accessTokenExpiredIn": "5m",
+  "db": {
+    "mongo": {
+      "url": "mongodb://localhost:27017",
+      "dbName": "authentication-test",
+      "username": "",
+      "password": "",
+      "collection": {
+        "account": {
+          "name": "accounts"
+        }
+      },
+      "config": {
+        "useUnifiedTopology": true,
+        "poolSize": 4 // 4 core
+      }
+    }
+  }
+}

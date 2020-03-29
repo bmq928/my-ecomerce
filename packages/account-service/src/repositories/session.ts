@@ -1,5 +1,5 @@
 import { client as cacheClient } from './_redis'
-import { LoginSession } from '@entity/login-session'
+import { LoginSession } from '@buy1s/account-entity'
 
 export function create(sess: LoginSession): Promise<void> {
   return new Promise((resolve, reject) => {

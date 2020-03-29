@@ -4,7 +4,7 @@ import bodyParser from 'body-parser'
 import morgan from 'morgan'
 import 'express-async-errors'
 
-import EntityError from '@entity/EntityError'
+import { EntityError } from '@buy1s/account-entity'
 import { BusinessError, handleError } from '../error-handler'
 import healthcheckRoute from './healthcheck'
 import readyCheckRoute from './readycheck'

@@ -1,5 +1,5 @@
 import md5 from 'md5'
-import { UserAccount } from '@entity/user-account'
+import { UserAccount } from '@buy1s/account-entity'
 
 import { BusinessError } from '../error-handler'
 import { accountRepo } from '../repositories'

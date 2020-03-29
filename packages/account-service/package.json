@@ -4,8 +4,9 @@
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node src/app.ts",
-    "test": "jest /test -i --verbose",
+    "dev": "ts-node src/index.ts",
+    "test": "jest /test -i",
+    "test:ci": "export NODE_ENV=ci && jest dist/test -i --ci",
     "build": "tsc"
   },
   "devDependencies": {

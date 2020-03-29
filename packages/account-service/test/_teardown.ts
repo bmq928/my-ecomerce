@@ -1,6 +1,6 @@
 import config from 'config'
 
-import { dbClient, cacheClient } from '@app/repositories'
+import { dbClient, cacheClient } from '../src/repositories'
 
 export async function disconnectAll(): Promise<void> {
   await Promise.all([disconnectCache(), disconnectDb()])

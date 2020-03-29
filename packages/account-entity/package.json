@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "dist/index.js",
   "license": "MIT",
+  "scripts": {
+    "build": "tsc"
+  },
   "devDependencies": {
     "@types/uuid": "^7.0.0",
     "@typescript-eslint/eslint-plugin": "^2.21.0",

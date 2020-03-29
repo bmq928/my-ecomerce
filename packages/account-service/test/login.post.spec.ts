@@ -4,22 +4,23 @@ import md5 from 'md5'
 import faker from 'faker'
 import jwt from 'jsonwebtoken'
 
-import app from '@app/api'
-import { dbClient, cacheClient } from '@app/repositories'
-import { makeUserAccount, UserAccount } from '@entity/user-account'
-import { UserRole } from '@entity/user-role'
+import app from '../src/api'
+import { dbClient, cacheClient } from '../src/repositories'
+import { makeUserAccount, UserAccount, UserRole } from '@buy1s/account-entity'
 
 describe('[POST] /login', () => {
   const baseApiUrl = '/login'
   const dbName = config.get('db.mongo.dbName') as string
-  const accCollectionName = config.get('db.mongo.collection.account.name') as string
+  const accCollectionName = config.get(
+    'db.mongo.collection.account.name'
+  ) as string
 
   let generatedFakeAccs: UserAccount[] = []
 
   beforeEach(async done => {
     const numAutoGenDoc = 5
     const docs = await insertAutogenerate(numAutoGenDoc)
-    
+
     generatedFakeAccs = docs
     done()
   })

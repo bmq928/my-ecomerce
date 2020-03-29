@@ -2,8 +2,8 @@ import request from 'supertest'
 import jwt from 'jsonwebtoken'
 import config from 'config'
 
-import app from '@app/api'
-import { cacheClient } from '@app/repositories'
+import app from '../src/api'
+import { cacheClient } from '../src/repositories'
 
 describe('[POST] /refresh-token', () => {
   const baseUrl = '/refresh-token'

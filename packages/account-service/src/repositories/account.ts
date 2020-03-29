@@ -1,6 +1,6 @@
 import config from 'config'
 import { Collection } from 'mongodb'
-import { UserAccount, makeUserAccount } from '@entity/user-account'
+import { UserAccount, makeUserAccount } from '@buy1s/account-entity'
 
 import { getDb } from './_mongo'
 

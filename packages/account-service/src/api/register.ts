@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { makeUserAccount } from '@entity/user-account'
+import { makeUserAccount } from '@buy1s/account-entity'
 
 import { createAccount } from '../use-cases'
 

@@ -1,9 +1,9 @@
 import request from 'supertest'
 import config from 'config'
 
-import app from '@app/api'
-import { makeLoginSession } from '@entity/login-session'
-import { cacheClient } from '@app/repositories'
+import app from '../src/api'
+import { makeLoginSession } from '@buy1s/account-entity'
+import { cacheClient } from '../src/repositories'
 import jwt from 'jsonwebtoken'
 
 describe('[GET] /login', () => {
