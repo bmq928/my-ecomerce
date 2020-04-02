@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, createRef } from 'react'
 import { useToasts } from 'react-toast-notifications'
 import { Link, useHistory } from 'react-router-dom'
 
+import { useEnterSubmit } from '../../shares/use-enter-submit'
 import * as service from '../../services'
 import './RegisterPage.scss'
 
@@ -9,7 +10,10 @@ export default function RegisterPage() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const history = useHistory()
+  const domRef = createRef<HTMLDivElement>()
   const { addToast } = useToasts()
+  
+  useEnterSubmit(attemptSubmit, domRef)
 
   async function attemptSubmit() {
     if (!username)
@@ -39,7 +43,7 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="RegisterPage box">
+    <div className="RegisterPage box" ref={domRef}>
       <div className="field is-horizontal title-group">
         <h4 className="subtitle is-4">Register Page</h4>
       </div>
