@@ -1,0 +1,1 @@
+export const ACCOUNT_SVC = 'http://localhost:3001'
