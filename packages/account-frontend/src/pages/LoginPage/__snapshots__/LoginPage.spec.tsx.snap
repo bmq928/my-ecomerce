@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[UI] LoginPage Match snapshot 1`] = `
+exports[`<LoginPage /> [UI] Snapshot 1`] = `
 <div
   className="LoginPage box"
 >
@@ -36,6 +36,7 @@ exports[`[UI] LoginPage Match snapshot 1`] = `
         >
           <input
             className="input is-primary"
+            onChange={[Function]}
             placeholder="e.g: Kamejoko"
             type="text"
           />
@@ -66,6 +67,7 @@ exports[`[UI] LoginPage Match snapshot 1`] = `
         >
           <input
             className="input is-primary"
+            onChange={[Function]}
             placeholder="Password"
             type="password"
           />
@@ -83,6 +85,7 @@ exports[`[UI] LoginPage Match snapshot 1`] = `
     </button>
     <button
       className="button is-primary"
+      onClick={[Function]}
     >
       Login
     </button>

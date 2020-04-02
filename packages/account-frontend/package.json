@@ -1,7 +1,6 @@
 {
   "name": "@buy1s/account-frontend",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "@buy1s/account-entity": "*",
     "@testing-library/jest-dom": "^4.2.4",

@@ -1,9 +1,43 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { useToasts } from 'react-toast-notifications'
+import { Link, useHistory } from 'react-router-dom'
+
+import * as service from '../../services'
 
 import './LoginPage.scss'
 
 export default function LoginPage() {
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const history = useHistory()
+  const { addToast } = useToasts()
+
+  async function attemptSubmit() {
+    if (!username)
+      return addToast('Username is empty', {
+        appearance: 'error',
+        autoDismiss: true,
+      })
+    if (!password)
+      return addToast('Password is empty', {
+        appearance: 'error',
+        autoDismiss: true,
+      })
+
+    try {
+      await service.login(username, password)
+      addToast('Create User Success', {
+        appearance: 'success',
+        autoDismiss: true,
+      })
+      history.push('/')
+    } catch (error) {
+      addToast(error.message, {
+        appearance: 'error',
+        autoDismiss: true,
+      })
+    }
+  }
   return (
     <div className="LoginPage box">
       <div className="field is-horizontal title-group">
@@ -20,6 +54,7 @@ export default function LoginPage() {
                 className="input is-primary"
                 type="text"
                 placeholder="e.g: Kamejoko"
+                onChange={e => setUsername(e.target.value)}
               />
             </div>
           </div>
@@ -36,6 +71,7 @@ export default function LoginPage() {
                 className="input is-primary"
                 type="password"
                 placeholder="Password"
+                onChange={e => setPassword(e.target.value)}
               />
             </div>
           </div>
@@ -43,7 +79,7 @@ export default function LoginPage() {
       </div>
       <div className="field is-horizontal button-group">
         <button className="button is-danger">Cancel</button>
-        <button className="button is-primary">Login</button>
+        <button className="button is-primary" onClick={attemptSubmit}>Login</button>
         <Link to="/register">Don't have account?</Link>
       </div>
     </div>
