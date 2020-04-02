@@ -13,7 +13,7 @@
   margin-top: 10%;
   width: 50%;
   min-width: 600px;
-  padding: 35px 45px 35px 45px;
+  padding: 25px 35px 35px 45px;
  
   .reverse-order {
     display: flex;
@@ -23,7 +23,7 @@
   .title-group {
     @extend .reverse-order;
     margin: auto;
-    margin-bottom: 25px;
+    margin-bottom: 45px;
   }
 
   .button-group {
