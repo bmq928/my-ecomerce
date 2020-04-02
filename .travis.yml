@@ -9,3 +9,4 @@ before_script:
   - yarn lerna run build
 script:
   -  yarn lerna run --scope @buy1s/*-service test:ci
+  -  yarn lerna run --scope @buy1s/*-frontend test
