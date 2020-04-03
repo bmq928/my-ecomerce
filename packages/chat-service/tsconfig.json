@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "esModuleInterop": true,
+    // "baseUrl": ".",
+    // "paths": {
+    //   "@entity/*": ["node_modules/@buy1s/account-entity/dist/*"],
+    //   "@app/*": ["src/*"]
+    // }
+  },
+  "include": ["src", "test"], //allow vscode intelligense in test folder but test folder is'nt necessary
+  "exclude": ["dist"]
+}
