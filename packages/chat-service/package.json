@@ -3,7 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "build": "tsc",
+    "test": "jest test",
+    "test:ci": "jest dist/test"
+  },
   "dependencies": {
+    "@buy1s/chat-entity": "*",
     "body-parser": "^1.19.0",
     "config": "^3.3.1",
     "cors": "^2.8.5",
@@ -12,6 +19,8 @@
     "mongodb": "^3.5.5",
     "morgan": "^1.10.0",
     "redis": "^3.0.2",
+    "socket.io": "^2.3.0",
+    "socket.io-redis": "^5.2.0",
     "winston": "^3.2.1"
   },
   "devDependencies": {
@@ -22,6 +31,8 @@
     "@types/mongodb": "^3.5.2",
     "@types/morgan": "^1.9.0",
     "@types/redis": "^2.8.16",
+    "@types/socket.io": "^2.1.4",
+    "@types/socket.io-redis": "^1.0.25",
     "@types/supertest": "^2.0.8",
     "@types/winston": "^2.4.4",
     "@typescript-eslint/eslint-plugin": "^2.21.0",

@@ -1,3 +1,5 @@
+import { ID } from "../id";
+
 export type Entity = {
-  id: string | number
+  id: ID
 }

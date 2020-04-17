@@ -1,9 +1,9 @@
 import { Entity } from '../entity'
+import { ID } from '../id'
 
 export type Message = Entity & {
   content: string
-  from: string
-  to: string
-  type: 'direct' | 'group'
+  from: ID
+  to: ID
   timestamp: number
 }
