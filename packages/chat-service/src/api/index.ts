@@ -1,12 +1,14 @@
-import express from 'express'
+import express, { Request, Response, NextFunction } from 'express'
 import morgan from 'morgan'
 import cors from 'cors'
 import bodyParser from 'body-parser'
+import { EntityError } from '@buy1s/chat-entity'
 
 import healthCheckRoute from './healthcheck'
 import readyCheckRoute from './readycheck'
 import messageRoute from './message'
 import onlineRoute from './online'
+import { handleError, BusinessError } from '../error-handler'
 
 const app = express()
 
@@ -33,6 +35,5 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   handleError(err)
   throw err
 })
-
 
 export default app
