@@ -4,6 +4,7 @@ import { Col, Row } from 'antd'
 
 import ConversationList from './components/ConversationList'
 import ChatBoard from './components/ChatBoard'
+import ChatInput from './components/ChatInput'
 import 'antd/dist/antd.css'
 import './App.scss'
 
@@ -12,8 +13,13 @@ export default function App() {
     <div className="App">
       <ToastProvider>
         <Row>
-          <Col span={8}><ConversationList /></Col>
-          <Col span={16}><ChatBoard /></Col>
+          <Col span={8}>
+            <ConversationList />
+          </Col>
+          <Col span={16}>
+            <ChatBoard />
+            <ChatInput />
+          </Col>
         </Row>
       </ToastProvider>
     </div>

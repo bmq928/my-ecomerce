@@ -1,7 +1,8 @@
 import React from 'react'
-import { List } from 'antd'
+import { List, Affix } from 'antd'
 import InfiniteScroll from 'react-infinite-scroller'
 
+import ConversationStatus from '../ConversationStatus'
 import Message from '../Message'
 
 export default function ChatBoard() {
@@ -88,15 +89,23 @@ export default function ChatBoard() {
       <List
         style={{
           overflow: 'auto',
-          height: '100vh',
+          height: '92vh',
           padding: '0 20px',
         }}
         bordered={true}
         itemLayout="horizontal"
         dataSource={data}
+        header={
+          <Affix offsetTop={10}>
+            <ConversationStatus
+              conversationName={data[3].from}
+              lastActiveTimeStamp={data[3].time}
+            />
+          </Affix>
+        }
         renderItem={(item) => (
           <Message
-            style={{ marginLeft: isCurrentUser(item.from) ? '39%' : '0' }}
+            isOwner={isCurrentUser(item.from)}
             author={item.from}
             content={item.message}
             timestamp={item.time}

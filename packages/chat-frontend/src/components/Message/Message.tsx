@@ -6,15 +6,24 @@ type Props = {
   content: string
   author: string
   timestamp: number
-  style? : React.CSSProperties
+  isOwner: boolean
 }
 
-export default function Message({ content, author, timestamp, style }: Props) {
+export default function Message({
+  content,
+  author,
+  timestamp,
+  isOwner,
+}: Props) {
+  const style = isOwner ? { marginLeft: '39%' } : {}
+  const displayAvatar = isOwner ? null : <Avatar>{author.substr(0, 1)}</Avatar>
+  const displayAuthor = isOwner ? 'You' : author
+
   return (
     <Comment
       style={style}
-      author={author}
-      avatar={<Avatar>{author.substr(0, 1)}</Avatar>}
+      author={displayAuthor}
+      avatar={displayAvatar}
       content={<Card style={{ width: '70vh' }}> {content}</Card>}
       datetime={
         <Tooltip title={moment(timestamp).format('YYYY-MM-DD HH:mm:ss')}>
